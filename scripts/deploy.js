@@ -7,11 +7,6 @@ const deployContract =  async function() {
 
   console.log("Deployed, view on etherscan");
 
-  // getLatestPrice 함수 실행
-  const symbol = "BTC";
-  const latestPrice = await tokenPrice.getLatestPrice(symbol);
-  console.log(`Latest price of ${symbol}: ${latestPrice}`);
-  
   console.log(Prices);
 }
 
