@@ -29,7 +29,7 @@ MNEMONIC=your_mnemonic
 ETHERSCAN_API_KEY=your_api
 ```
 
-#How to Run
+# How to Run
 
 ```
 npx hardhat compile
