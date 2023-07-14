@@ -1,20 +1,22 @@
-const { ethers } = require("hardhat");
+const { ethers } = require("hardhat")
 
-async function main() {
-  const TokenPrice = await ethers.getContractFactory("TokenPrice");
-  const tokenPrice = await TokenPrice.deploy();
+const deployContract =  async function() {
+  const [deployer] = await ethers.getSigners();
 
-  await tokenPrice.deployed(); // 배포 완료 대기
+  const Prices = await ethers.deployContract("TokenPrice");
 
-  console.log("TokenPrice deployed to:", tokenPrice.address);
+  console.log("Deployed, view on etherscan");
 
-  // getLatestPrice 함수 실행 예시
+  // getLatestPrice 함수 실행
   const symbol = "BTC";
   const latestPrice = await tokenPrice.getLatestPrice(symbol);
-  console.log(`Latest price for ${symbol}:`, latestPrice.toString());
+  console.log(`Latest price of ${symbol}: ${latestPrice}`);
+  
+  console.log(Prices);
 }
 
-main()
+// 스크립트 실행
+deployContract()
   .then(() => process.exit(0))
   .catch((error) => {
     console.error(error);
